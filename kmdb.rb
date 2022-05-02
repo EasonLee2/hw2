@@ -214,6 +214,7 @@ new_role15["actor_id"] = new_actor11["id"]
 new_role15["character_name"] = "Selina Kyle"
 new_role15.save
 
+# Below code I put in to check that my databases were being created correctly
 # all_studios = Studio.all
 # puts all_studios.inspect
 
@@ -234,30 +235,34 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-for movie in Movie
+movies = Movie.all
+for movie in movies
     movie_title = movie["title"]
     movie_year_released = movie["year_released"]
     movie_rated = movie["rated"]
-    studio = Studio.find_by({"id" => Movie["studio_id"]})
+    studio = Studio.find_by({"id" => movie["studio_id"]})
     movie_studio = studio["name"]
     puts "#{movie_title} #{movie_year_released} #{movie_rated} #{movie_studio}"
 end
 
 # Prints a header for the cast output
-# puts ""
-# puts "Top Cast"
-# puts "========"
-# puts ""
+puts ""
+puts "Top Cast"
+puts "========"
+puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-# for role in Role
-#     role_movie_id = role["movie_id"]
-#     role_actor_id = role["actor_id"]
-#     role_character_name = role["character_name"]
-#     puts "#{role_movie_id} #{role_actor_id} #{role_character_name}"
-# end
+roles = Role.all
+for role in roles
+    movie = Movie.find_by({"id" => role["movie_id"]})
+    role_movie_title = movie["title"]
+    actor = Actor.find_by({"id" => role["actor_id"]})
+    role_actor_name = actor["name"]
+    role_character_name = role["character_name"]
+    puts "#{role_movie_title} #{role_actor_name} #{role_character_name}"
+end
 
 # Successful sample output is as shown:
 
