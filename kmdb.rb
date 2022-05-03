@@ -238,14 +238,15 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-movies = Movie.all
-for movie in movies
+# added ljust to manually space out between columns
+
+for movie in Movie.all
     movie_title = movie["title"]
     movie_year_released = movie["year_released"]
     movie_rated = movie["rated"]
     studio = Studio.find_by({"id" => movie["studio_id"]})
     movie_studio = studio["name"]
-    puts "#{movie_title} -- #{movie_year_released} -- #{movie_rated} -- #{movie_studio}"
+    puts "#{movie_title}".ljust(24) + "#{movie_year_released}".ljust(8) + "#{movie_rated}".ljust(9) + "#{movie_studio}"
 end
 
 # Prints a header for the cast output
@@ -257,14 +258,13 @@ puts ""
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
 
-# roles = Role.all
 for role in Role.all
     movie = Movie.find_by({"id" => role["movie_id"]})
     role_movie_title = movie["title"]
     actor = Actor.find_by({"id" => role["actor_id"]})
     role_actor_name = actor["name"]
     role_character_name = role["character_name"]
-    puts "#{role_movie_title} -- #{role_actor_name} -- #{role_character_name}"
+    puts "#{role_movie_title}".ljust(25) + "#{role_actor_name}".ljust(23) + "#{role_character_name}"
 end
 
 # Successful sample output is as shown:
