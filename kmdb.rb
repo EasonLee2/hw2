@@ -217,7 +217,7 @@ new_role15["actor_id"] = new_actor11["id"] # Actor 11 i.e. Anne Hathaway
 new_role15["character_name"] = "Selina Kyle"
 new_role15.save
 
-# Below code was a check I put in to see if my databases were being created correctly
+# NOTE: Below commented code was a check I put in to see if my databases were being created correctly
 # all_studios = Studio.all
 # puts all_studios.inspect
 
@@ -238,7 +238,7 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
 
-# added ljust to manually space out between columns
+# NOTE: added ljust to manually space out between columns
 
 for movie in Movie.all
     movie_title = movie["title"]
